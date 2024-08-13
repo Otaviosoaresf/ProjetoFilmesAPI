@@ -1,3 +1,10 @@
+# FilmesInfo
+
+Projeto consiste em um site que exibe informações de filmes buscado pelo usuário. Os dados são consumidos de uma API publica chamada OMDB API.
+
+Esse projeto ainda está em andamento, mais informações em breve e atualizações ainda serão incrementadas...
+
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
