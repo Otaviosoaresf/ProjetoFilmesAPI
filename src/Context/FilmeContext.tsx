@@ -3,7 +3,9 @@ import { IFilme } from "../Interfaces/Ifilme"
 
 type FilmeContextType = {
     filme: IFilme | null;
-    setFilme: (filme: IFilme) => void;
+    setFilme: (filme: IFilme | null) => void;
+    erro: string | null;
+    setErro: (erro: string | null) => void;
 }
 
 type FilmeProviderProps = {
@@ -13,12 +15,15 @@ type FilmeProviderProps = {
 const FilmeContext = createContext<FilmeContextType | undefined>(undefined)
 
 export const FilmeProvider = ({ children }: FilmeProviderProps) => {
-    const [filme, setFilme] = useState<IFilme | null>(null);
+    const [ filme, setFilme ] = useState<IFilme | null>(null);
+    const [ erro, setErro ] = useState<string | null>(null)
 
     return (
         <FilmeContext.Provider value={{
             filme,
-            setFilme
+            setFilme,
+            erro,
+            setErro
         }}>
             {children}
         </FilmeContext.Provider>

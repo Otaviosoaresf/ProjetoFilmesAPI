@@ -18,7 +18,7 @@ const TesteFilmesAPI = () => {
 
     return (
         <>
-            <h1>Trikas!</h1>
+            <h1>Teste</h1>
             <img src={dados?.Poster} />
         </>
     )

@@ -1,34 +1,58 @@
 import styled from "styled-components";
+import { IoLogoLinkedin } from "react-icons/io5";
+import { IoLogoGithub } from "react-icons/io5";
 
 const ContainerRodape = styled.div`
     width: 100%;
-    height: 30vh;
     background-color: #EEEEEE;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 `
-
+const RodapeTitulo = styled.h2`
+    color: #00ADB5;
+    font-size: 30px;
+    margin: 20px 0;
+`
+const Subtitulo = styled.h3`
+    color: #393e46;
+    font-size: 20px;
+    margin-bottom: 10px;
+`
 const DivContato = styled.div`
     display: flex;
-    flex-direction: column;
     align-items: center;
-    margin: 15px 0;
-    gap: 5px;
+    margin-bottom: 15px;
+    gap: 40px;
+`
+const Links = styled.a`
+    text-decoration: none;
+    color: #393e46;
+    & :hover {
+        color: #00ADB5;
+    }
+`
+const Span = styled.span`
+    color: #00ADB5;
 `
 
 const Rodape = () => {
     return (
         <ContainerRodape>
-            <h2>Desenvolvido por Otávio</h2>
+            <RodapeTitulo>Developed by Otávio</RodapeTitulo>
+            <Subtitulo>Contato</Subtitulo>
             <DivContato>
-                <h3>Contato</h3>
-                <p>Email - otvio2018@outlook.com</p>
-                <p>Linkedin: https://www.linkedin.com/in/otavio-soares-felicio/</p>
-                <p>Github: https://github.com/Otaviosoaresf</p>
+                <Links href="https://www.linkedin.com/in/otavio-soares-felicio/">
+                    <IoLogoLinkedin size={50} />
+                </Links>
+                <Links href="https://github.com/Otaviosoaresf">
+                    <IoLogoGithub size={50} />
+                </Links>
             </DivContato>
-            <h2>API Utilizada: <span>OMDb API</span></h2>
+            <Subtitulo>
+                API Utilizada: <Span>OMDb API</Span>
+            </Subtitulo>
         </ContainerRodape>
     )
 }

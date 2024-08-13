@@ -24,7 +24,7 @@ const TesteStormGlass = () => {
     console.log(dados)
 
     return (
-        <h1>Trikas!</h1>
+        <h1>Teste</h1>
 
     )
 }

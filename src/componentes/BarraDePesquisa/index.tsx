@@ -6,7 +6,7 @@ import { useFilme } from "../../Context/FilmeContext";
 const ContainerBusca = styled.div`
     display: flex;
     width: 100%;
-    height: 50vh;
+    height: 30vh;
     padding: 10px;
     justify-content: center;
     align-items: center;
@@ -32,29 +32,40 @@ const BotaoBusca = styled.button`
 `
 
 const BarraDePesquisa = () => {
-    const [ busca, setBusca] = useState<string>();
-    const { setFilme } = useFilme();
+    const [ busca, setBusca ] = useState<string>();
+    const { setFilme, setErro } = useFilme();
 
-    const BuscaFilmeNaAPI = () => {
-        axios.get(`https://www.omdbapi.com/?t=${busca}&apikey=3ea95cdf`)
-            .then((response) => {
-                setFilme(response.data);
-            })
-            .catch((error) => {
-                console.error('Erro ao fazer a requisição', error)
-            })
+    const BuscaFilmeNaAPI = async () => {
+        try {
+            const resposta = await axios.get(
+                `https://www.omdbapi.com/?t=${busca}&apikey=3ea95cdf`
+            );
+
+            const dados = resposta.data
+
+            if (dados && dados.Title) {
+                setFilme(dados)
+                setErro(null);
+            } else {
+                setFilme(null)
+                setErro("Nenhum filme encontrado para essa pesquisa..")
+            }
+        } catch (error) {
+            setFilme(null)
+            setErro(`O erro ${error} ocorreu ao buscar o filme`)
+        }    
     }
 
     return (
         <ContainerBusca>
-            <InputBusca 
+            <InputBusca
                 type="text"
                 placeholder="Procure filmes pelo titulo..."
                 value={busca}
                 onChange={(evento) => {
-                   setBusca(evento.target.value) 
+                    setBusca(evento.target.value)
                 }}
-                />
+            />
             <BotaoBusca onClick={BuscaFilmeNaAPI}>Buscar</BotaoBusca>
         </ContainerBusca>
     )

@@ -1,5 +1,15 @@
 import styled from "styled-components";
 import { useFilme } from "../../Context/FilmeContext";
+import { Link } from "react-router-dom";
+
+const ContainerErro = styled.div`
+    width: 60%;
+    padding: 20px;
+    color: #EEEE;
+    font-size: 30px;
+    margin-bottom: 100px;
+    text-align: center;
+`
 
 const Container = styled.div`
     background-color: #EEEEEE;
@@ -8,6 +18,7 @@ const Container = styled.div`
     gap: 30px;
     border-radius: 15px;
     width: 60%;
+    margin-bottom: 50px;
 `
 const Poster = styled.img`
     width: 200px;
@@ -35,14 +46,20 @@ const P = styled.p`
 `
 
 const ResultadoPesquisa = () => {
-    const { filme } = useFilme();
+    const { filme, erro } = useFilme();
 
-    // Colocar a lógica de retornar um componente alternativo de erro caso houver problemas em buscar a API
-    // Sugestão no chatgpt
-    
+    if (erro) {
+        return <ContainerErro>
+            {erro}
+        </ContainerErro>
+    }
+
     return (
+
         <Container>
-            <Poster src={filme?.Poster} />
+            {filme && <Link to={'/filme'} style={{ textDecoration: 'none', color: 'inherit' }}>
+                <Poster src={filme?.Poster} />
+            </Link>}
             <CardInfo>
                 <Titulo>Title: <Destaque>{filme?.Title}</Destaque></Titulo>
                 <P>Year: <Destaque>{filme?.Year}</Destaque></P>
@@ -50,6 +67,7 @@ const ResultadoPesquisa = () => {
                 <P>IMDB Rating: <Destaque>{filme?.imdbRating}</Destaque></P>
             </CardInfo>
         </Container>
+
     )
 }
 

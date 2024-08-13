@@ -3,6 +3,7 @@ import PaginaBase from "./Paginas/PaginaBase"
 import { EstilosGlobais } from "./EstilosGlobais";
 import Inicio from "./Paginas/Inicio";
 import { FilmeProvider } from "./Context/FilmeContext";
+import Filme from "./Paginas/Filme";
 
 
 function Rotas() {
@@ -13,6 +14,7 @@ function Rotas() {
         <Routes>
           <Route path="/" element={<PaginaBase />}>
             <Route index element={<Inicio />}></Route>
+            <Route path="filme" element={<Filme />}></Route>
           </Route>
         </Routes>
       </FilmeProvider>
