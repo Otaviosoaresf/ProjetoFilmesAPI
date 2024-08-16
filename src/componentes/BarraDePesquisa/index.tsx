@@ -1,5 +1,3 @@
-import axios from "axios";
-import { useState } from "react";
 import styled from "styled-components";
 import { useFilme } from "../../Context/FilmeContext";
 
@@ -32,41 +30,20 @@ const BotaoBusca = styled.button`
 `
 
 const BarraDePesquisa = () => {
-    const [ busca, setBusca ] = useState<string>();
-    const { setFilme, setErro } = useFilme();
-
-    const BuscaFilmeNaAPI = async () => {
-        try {
-            const resposta = await axios.get(
-                `https://www.omdbapi.com/?t=${busca}&apikey=3ea95cdf`
-            );
-
-            const dados = resposta.data
-
-            if (dados && dados.Title) {
-                setFilme(dados)
-                setErro(null);
-            } else {
-                setFilme(null)
-                setErro("Nenhum filme encontrado para essa pesquisa..")
-            }
-        } catch (error) {
-            setFilme(null)
-            setErro(`O erro ${error} ocorreu ao buscar o filme`)
-        }    
-    }
+    
+    const { busca, setBusca, fetchAPI } = useFilme();
 
     return (
         <ContainerBusca>
             <InputBusca
                 type="text"
-                placeholder="Procure filmes pelo titulo..."
+                placeholder="Search films by title..."
                 value={busca}
                 onChange={(evento) => {
                     setBusca(evento.target.value)
                 }}
             />
-            <BotaoBusca onClick={BuscaFilmeNaAPI}>Buscar</BotaoBusca>
+            <BotaoBusca onClick={fetchAPI}>Search</BotaoBusca>
         </ContainerBusca>
     )
 }

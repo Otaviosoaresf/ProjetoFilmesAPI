@@ -1,29 +1,47 @@
-import { createContext, ReactNode, useContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import { IFilme } from "../Interfaces/Ifilme"
+import { FilmContextType } from "../Types/FilmContextType";
+import { FilmProviderProps } from "../Types/FilmProviderProps";
+import axios from "axios";
 
-type FilmeContextType = {
-    filme: IFilme | null;
-    setFilme: (filme: IFilme | null) => void;
-    erro: string | null;
-    setErro: (erro: string | null) => void;
-}
+const FilmeContext = createContext<FilmContextType | undefined>(undefined)
 
-type FilmeProviderProps = {
-    children: ReactNode;
-}
-
-const FilmeContext = createContext<FilmeContextType | undefined>(undefined)
-
-export const FilmeProvider = ({ children }: FilmeProviderProps) => {
+export const FilmeProvider = ({ children }: FilmProviderProps) => {
     const [ filme, setFilme ] = useState<IFilme | null>(null);
     const [ erro, setErro ] = useState<string | null>(null)
+    const [ busca, setBusca ] = useState<string>("");
+
+    const fetchAPI = async () => {
+
+        try {
+            const resposta = await axios.get(
+                `https://www.omdbapi.com/?t=${busca}&apikey=3ea95cdf`
+            );
+    
+            const dados = resposta.data
+    
+            if (dados && dados.Title) {
+                setFilme(dados)
+                setErro(null);
+            } else {
+                setFilme(null)
+                setErro("Film not found...")
+            }
+        } catch (error) {
+            setFilme(null)
+            setErro(`Error ${error} occurred when searching for the film...`)
+        }    
+    }
 
     return (
         <FilmeContext.Provider value={{
             filme,
             setFilme,
             erro,
-            setErro
+            setErro,
+            busca,
+            setBusca,
+            fetchAPI
         }}>
             {children}
         </FilmeContext.Provider>

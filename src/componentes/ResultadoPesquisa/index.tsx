@@ -10,7 +10,6 @@ const ContainerErro = styled.div`
     margin-bottom: 100px;
     text-align: center;
 `
-
 const Container = styled.div`
     background-color: #EEEEEE;
     display: flex;
@@ -25,12 +24,10 @@ const Poster = styled.img`
     height: 300px;
     border-radius: 15px;
 `
-
 const CardInfo = styled.div`
     display: flex;
     flex-direction: column;
 `
-
 const Destaque = styled.span`
     color: #00ADB5;
 `

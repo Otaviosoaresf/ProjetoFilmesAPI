@@ -35,13 +35,22 @@ const Links = styled.a`
 `
 const Span = styled.span`
     color: #00ADB5;
+    &:hover {
+        font-weight: bold;
+        font-size: 22px;
+        cursor: pointer;
+    }
 `
 
 const Rodape = () => {
+    const addLink = () => {
+        window.location.href = 'https://www.omdbapi.com/'
+    }
+
     return (
         <ContainerRodape>
             <RodapeTitulo>Developed by Otávio</RodapeTitulo>
-            <Subtitulo>Contato</Subtitulo>
+            <Subtitulo>Contact</Subtitulo>
             <DivContato>
                 <Links href="https://www.linkedin.com/in/otavio-soares-felicio/">
                     <IoLogoLinkedin size={50} />
@@ -51,7 +60,10 @@ const Rodape = () => {
                 </Links>
             </DivContato>
             <Subtitulo>
-                API Utilizada: <Span>OMDb API</Span>
+                API Used: 
+                <Span
+                    onClick={addLink}
+                >OMDb API</Span>
             </Subtitulo>
         </ContainerRodape>
     )
