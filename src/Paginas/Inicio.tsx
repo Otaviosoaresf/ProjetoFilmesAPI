@@ -5,9 +5,17 @@ import ResultadoPesquisa from "../componentes/ResultadoPesquisa";
 const Container = styled.section`
     display: flex;
     flex-direction: column;
-    padding: 50px 100px;
+    padding: 10px 0;
     justify-content: center;
     align-items: center;
+    
+    @media (min-width: 500px) and (max-width: 1024px) {
+        padding: 30px;
+    }
+
+    @media (min-width: 1025px) {
+        padding: 50px 100px;
+    }
 `
 
 const Inicio = () => {

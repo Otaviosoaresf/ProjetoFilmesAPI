@@ -12,8 +12,12 @@ const ContainerRodape = styled.div`
 `
 const RodapeTitulo = styled.h2`
     color: #00ADB5;
-    font-size: 30px;
+    font-size: 25px;
     margin: 20px 0;
+
+    @media (min-width: 390px) {
+        font-size: 30px;
+    }
 `
 const Subtitulo = styled.h3`
     color: #393e46;

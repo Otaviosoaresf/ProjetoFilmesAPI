@@ -4,29 +4,48 @@ import { useFilme } from "../../Context/FilmeContext";
 const ContainerBusca = styled.div`
     display: flex;
     width: 100%;
-    height: 30vh;
+    height: 15vh;
     padding: 10px;
     justify-content: center;
     align-items: center;
+
+    @media (min-width: 1024px) {
+        height: 30vh;
+    }
 `
 const InputBusca = styled.input`
-    font-size: 20px;
+    font-size: 15px;
     height: 40px;
-    width: 60%;
+    width: 80%;
     padding: 0 10px;
     background-color: #222831;
     color: #EEEEEE;
     border: solid 1px #EEEEEE;
     border-radius: 20px 0 0 20px;
+
+    
+    @media (min-width: 500px) {
+        font-size: 20px;
+    }
+
+    @media (min-width: 1024px) {
+        width: 60%;
+    }
 `
 const BotaoBusca = styled.button`
-    font-size: 20px;
+    font-size: 15px;
+    font-weight: bold;
     height: 40px;
     padding: 10px;
     background-color: #EEEEEE;
     border: none;
     cursor: pointer;
     border-radius: 0 20px 20px 0;
+
+    @media (min-width: 500px) {
+        font-size: 20px;
+    }
+
 `
 
 const BarraDePesquisa = () => {

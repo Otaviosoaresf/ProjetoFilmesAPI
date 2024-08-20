@@ -16,8 +16,23 @@ const Container = styled.div`
     padding: 20px;
     gap: 30px;
     border-radius: 15px;
-    width: 60%;
+    width: 80%;
     margin-bottom: 50px;
+    flex-direction: column;
+    margin-top: 50px;
+    justify-content: center;
+    align-items: center;
+
+    @media (min-width: 768px) {
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+
+    @media (min-width: 1024px) {
+        width: 60%;
+        margin-top: 0;
+    }
 `
 const Poster = styled.img`
     width: 200px;
@@ -33,13 +48,21 @@ const Destaque = styled.span`
 `
 const Titulo = styled.h3`
     color: #393e46;
-    font-size: 30px;
+    font-size: 25px;
     margin-bottom: 20px;
+
+    @media (min-width: 500px) {
+        font-size: 30px;
+    }
 `
 const P = styled.p`
     color: #393e46;
-    font-size: 20px;
+    font-size: 15px;
     margin: 2px 0;
+
+    @media (min-width: 500px) {
+        font-size: 20px;
+    }
 `
 
 const ResultadoPesquisa = () => {
