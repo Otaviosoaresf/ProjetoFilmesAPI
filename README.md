@@ -1,8 +1,24 @@
 # FilmesInfo
 
 Projeto consiste em um site que exibe informações de filmes buscado pelo usuário. Os dados são consumidos de uma API publica chamada OMDB API.
+O site foi desenvolvido todo em Inglês, pois a API utilizada para os filmes devolvem dados em Inglês.
 
-Esse projeto ainda está em andamento, mais informações em breve e atualizações ainda serão incrementadas...
+## Funcionalidades
+
+1. O site contém uma barra de pesquisa para se pesquisar os títulos dos filmes que o usuário tem interesse.
+2. Após o filmes aparecer caso a busca seja bem sucedida, será exibido na tela informações do filme como título, gênero, ano de lançamento e etc..
+3. Ao clicar no poster do filme quando o processo descrito no passo acima ocorrer, você irá abrir uma página nova com mais informações ainda sobre o filme pesquisado.
+
+## Tecnologias Utilizadas
+
+1. Framework: React
+2. Linguagem: Typescript
+3. Build: Vite
+4. CSS: Styled Components
+5. Comunicação com a API: Axios
+6. Encapsulamento de estados e conexão com API: Context API
+7. Rotas entre páginas: React-Router-Dom
+8. Fonte de dados: OMDB API
 
 
 # React + TypeScript + Vite
